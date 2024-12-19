@@ -76,12 +76,6 @@ function matchPattern(name: string, pattern: string | RegExp): boolean {
     if (typeof pattern === 'string') {
         return name === pattern
     }
-    // 如果是正则表达式,确保完全匹配
-    const regexStr = pattern.toString()
-    const isFullMatch = regexStr.startsWith('/^') && regexStr.endsWith('$/')
-    if (!isFullMatch) {
-        pattern = new RegExp(`^${pattern.source}$`)
-    }
     return pattern.test(name)
 }
 
